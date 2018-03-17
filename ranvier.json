@@ -27,5 +27,5 @@
   "moveCommand": "move",
   "skillLag": 2000,
   "defaultMaxPlayerInventory": 16,
-  "maxIdleTime": 20
+  "maxIdleTime": 1073741824
 }

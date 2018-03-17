@@ -9,7 +9,12 @@
   "bundles": [
     "ranvier-telnet",
     "ranvier-websocket",
-    "shiningfuture-areas"
+    "shiningfuture-areas",
+    "shiningfuture-channels",
+    "shiningfuture-commands",
+    "shiningfuture-input-events",
+    "shiningfuture-lib",
+    "shiningfuture-player-events"
   ],
   "maxAccountNameLength": 20,
   "minAccountNameLength": 3,

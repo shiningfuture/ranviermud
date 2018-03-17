@@ -1,11 +1,6 @@
 {
   "username": "Admin",
-  "characters": [
-    {
-      "username": "Admin",
-      "deleted": false
-    }
-  ],
+  "characters": [],
   "password": "$2a$10$DAR.ys9CpdK2povXnuAEFukoK8qzlEXyEjBpa3aeFKz1qU9NEHEza",
   "banned": false,
   "deleted": false,

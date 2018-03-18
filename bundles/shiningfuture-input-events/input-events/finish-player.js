@@ -1,5 +1,7 @@
 'use strict';
 
+const uuidv4 = require('uuid/v4');
+
 /**
  * Finish player creation. Add the character to the account then add the player
  * to the game world
@@ -17,9 +19,11 @@ module.exports = (srcPath) => {
         attributes: {}
       });
 
+
+      player.id = uuidv4();
+
       args.account.addCharacter(args.name);
       args.account.save();
-
 
       const room = state.RoomManager.startingRoom;
       player.room = room;

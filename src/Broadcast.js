@@ -1,7 +1,6 @@
 'use strict';
 
-const ansi = require('sty');
-ansi.enable(); // force ansi on even when there isn't a tty for the server
+const chalk = require('chalk');
 const wrap = require('wrap-ansi');
 const TypeUtil = require('./TypeUtil');
 const Broadcastable = require('./Broadcastable');
@@ -37,7 +36,7 @@ class Broadcast {
           target.socket._prompted = false;
         }
         let targetMessage = formatter(target, message);
-        targetMessage = wrapWidth ? Broadcast.wrap(targetMessage, wrapWidth) : ansi.parse(targetMessage);
+        targetMessage = wrapWidth ? Broadcast.wrap(targetMessage, wrapWidth) : chalk`${targetMessage}`);
         target.socket.write(targetMessage);
       }
     });
@@ -224,7 +223,7 @@ class Broadcast {
    * @return {string}
    */
   static wrap(message, width = 80) {
-    return Broadcast._fixNewlines(wrap(ansi.parse(message), width));
+    return Broadcast._fixNewlines(wrap(chalk`${message}`), width));
   }
 
   /**

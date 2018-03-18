@@ -20,7 +20,7 @@ module.exports = (srcPath) => {
       });
 
 
-      player.id = uuidv4();
+      player.setMeta('id',uuidv4());
 
       args.account.addCharacter(args.name);
       args.account.save();

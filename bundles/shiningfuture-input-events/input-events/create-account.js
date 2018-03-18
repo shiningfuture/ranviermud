@@ -27,7 +27,7 @@ module.exports = (srcPath) => {
             username: name
           });
 
-          newAccount.id = uuidv4()
+          newAccount.setMeta('id',uuidv4())
 
           return socket.emit('change-password', socket, {
             account: newAccount,

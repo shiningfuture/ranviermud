@@ -36,7 +36,7 @@ class Broadcast {
           target.socket._prompted = false;
         }
         let targetMessage = formatter(target, message);
-        targetMessage = wrapWidth ? Broadcast.wrap(targetMessage, wrapWidth) : chalk`${targetMessage}`);
+        targetMessage = wrapWidth ? Broadcast.wrap(chalk`${targetMessage}`, wrapWidth) : chalk`${targetMessage}`;
         target.socket.write(targetMessage);
       }
     });
@@ -223,7 +223,7 @@ class Broadcast {
    * @return {string}
    */
   static wrap(message, width = 80) {
-    return Broadcast._fixNewlines(wrap(chalk`${message}`), width));
+    return Broadcast._fixNewlines(wrap(chalk`${message}`, width));
   }
 
   /**

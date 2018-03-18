@@ -1,6 +1,6 @@
 'use strict';
 
-const uuid = require('node-uuid');
+const uuidv4 = require('uuid/v4');
 const Attributes = require('./Attributes');
 const Character = require('./Character');
 const Config = require('./Config');
@@ -29,12 +29,12 @@ class Npc extends Character {
     this.defaultEquipment = data.equipment || [];
     this.defaultItems = data.items || [];
     this.description = data.description;
-    this.entityReference = data.entityReference; 
+    this.entityReference = data.entityReference;
     this.id = data.id;
     this.keywords = data.keywords;
     this.pacifist = data.pacifist || false;
     this.quests = data.quests || [];
-    this.uuid = data.uuid || uuid.v4();
+    this.uuid = data.uuid || uuidv4();
   }
 
 

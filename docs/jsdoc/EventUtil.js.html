@@ -73,7 +73,7 @@ class EventUtil {
    * @return {function (string)}
    */
   static genSay(socket) {
-    return string => socket.write(sty.parse(string + '\r\n'));
+    return string => socket.write(chalk`${string}\r\n`);
   }
 }
 

@@ -1,7 +1,5 @@
 'use strict';
 
-const uuidv4 = require('uuid/v4');
-
 /**
  * Account creation event
  */
@@ -26,8 +24,6 @@ module.exports = (srcPath) => {
           newAccount = new Account({
             username: name
           });
-
-          newAccount.setMeta('id',uuidv4())
 
           return socket.emit('change-password', socket, {
             account: newAccount,

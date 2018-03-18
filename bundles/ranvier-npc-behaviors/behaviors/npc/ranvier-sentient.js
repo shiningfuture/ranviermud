@@ -22,8 +22,8 @@
  */
 
 const apiai = require('apiai');
-const uuid = require('node-uuid');
-const sessionId = uuid.v4();
+const uuidv4 = require('uuid/v4');
+const sessionId = uuidv4();
 const fs = require('fs');
 let clientKey = null;
 try {
@@ -110,4 +110,3 @@ module.exports = srcPath => {
     }
   };
 };
-

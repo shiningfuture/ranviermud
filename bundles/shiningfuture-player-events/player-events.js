@@ -1,7 +1,6 @@
 'use strict';
 
 const sprintf = require('sprintf-js').sprintf;
-const LevelUtil = require('../ranvier-lib/lib/LevelUtil');
 
 module.exports = (srcPath) => {
   const Broadcast = require(srcPath + 'Broadcast');
@@ -20,8 +19,9 @@ module.exports = (srcPath) => {
         if (this.commandQueue.hasPending && this.commandQueue.lagRemaining <= 0) {
           Broadcast.sayAt(this);
           this.commandQueue.execute();
-          Broadcast.prompt(this);
+          //Broadcast.prompt(this);
         }
+
         const lastCommandTime = this._lastCommandTime || Infinity;
         const timeSinceLastCommand = Date.now() - lastCommandTime;
         const maxIdleTime = (Math.abs(Config.get('maxIdleTime')) * 60000) || Infinity;
@@ -35,64 +35,6 @@ module.exports = (srcPath) => {
           });
         }
       },
-
-      /**
-       * Handle player gaining experience
-       * @param {number} amount Exp gained
-       */
-      experience: state => function (amount) {
-        Broadcast.sayAt(this, `<blue>You gained <bold>${amount}</bold> experience!</blue>`);
-
-        const totalTnl = LevelUtil.expToLevel(this.level + 1);
-
-        // level up, currently wraps experience if they gain more than needed for multiple levels
-        if (this.experience + amount > totalTnl) {
-          Broadcast.sayAt(this, '                                   <bold><blue>!Level Up!</blue></bold>');
-          Broadcast.sayAt(this, Broadcast.progress(80, 100, "blue"));
-
-          let nextTnl = totalTnl;
-          while (this.experience + amount > nextTnl) {
-            amount = (this.experience + amount) - nextTnl;
-            this.level++;
-            this.experience = 0;
-            nextTnl = LevelUtil.expToLevel(this.level + 1);
-            Broadcast.sayAt(this, `<blue>You are now level <bold>${this.level}</bold>!</blue>`);
-            this.emit('level');
-          }
-        }
-
-        this.experience += amount;
-
-        this.save();
-      },
-
-      /**
-       * Handle a player equipping an item with a `stats` property
-       * @param {string} slot
-       * @param {Item} item
-       */
-      equip: state => function (slot, item) {
-        if (!item.metadata.stats) {
-          return;
-        }
-
-        const config = {
-          name: 'Equip: ' + slot,
-          type: 'equip.' + slot
-        };
-
-        const effectState = {
-          slot,
-          stats: item.metadata.stats,
-        };
-
-        this.addEffect(state.EffectFactory.create(
-          'equip',
-          this,
-          config,
-          effectState
-        ));
-      }
     }
   };
 };

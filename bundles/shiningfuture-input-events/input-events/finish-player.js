@@ -14,15 +14,7 @@ module.exports = (srcPath) => {
         name: args.name,
         account: args.account,
         // TIP:DefaultAttributes: This is where you can change the default attributes for players
-        attributes: {
-          health: 100,
-          strength: 20,
-          agility: 20,
-          intellect: 20,
-          stamina: 20,
-          armor: 0,
-          critical: 0
-        }
+        attributes: {}
       });
 
       args.account.addCharacter(args.name);

@@ -34,7 +34,7 @@ module.exports = (srcPath) => {
 
       state.CommandManager.get('look').execute(null, player);
 
-      Broadcast.prompt(player);
+      //Broadcast.prompt(player);
 
       // All that shit done, let them play!
       player.socket.emit('commands', player);

@@ -6,7 +6,7 @@ Login event flow
                    /         \
      create-account           password----------------------
         |                            |                     |
-  change-password              choose-character      change-password
+  change-password                    |               change-password
         |                            |
   create-player                      |
         |                            |

@@ -81,7 +81,7 @@ module.exports = (src) => {
           }
         }
 
-        Broadcast.prompt(player);
+        //Broadcast.prompt(player);
         loop();
       });
     }

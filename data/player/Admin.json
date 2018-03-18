@@ -9,11 +9,9 @@
     "items": [],
     "max": 16
   },
-  "metadata": {
-
-  },
+  "metadata": {},
   "playerClass": null,
-  "prompt": "",
+  "prompt": "[ %health.current%/%health.max% <bold>hp</bold> ]",
   "quests": {
     "completed": [],
     "active": []

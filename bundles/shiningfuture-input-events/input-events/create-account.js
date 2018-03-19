@@ -13,7 +13,7 @@ module.exports = (srcPath) => {
       const say = EventUtil.genSay(socket);
 
       let newAccount = null;
-      write(`<bold>Do you want your account's username to be ${name}?</bold> <cyan>[y/n]</cyan> `);
+      write(`{bold Do you want your account's username to be ${name}?} {cyan [y/n]} `);
 
       socket.once('data', data => {
         data = data.toString('utf8').trim();

@@ -12,7 +12,7 @@ module.exports = (srcPath) => {
     aliases: [ 'pending' ],
     usage: 'queue',
     command : (state) => (args, player) => {
-      Broadcast.sayAt(player, '<bold><yellow>Command Queue:</yellow></bold>');
+      Broadcast.sayAt(player, '{bold {yellow Command Queue:}}');
       if (!player.commandQueue.hasPending) {
         return Broadcast.sayAt(player, ' -) None.');
       }
@@ -23,12 +23,12 @@ module.exports = (srcPath) => {
         const command = commands[i];
         const index = sprintf(indexToken, i + 1);
         const ttr = sprintf('%.1f', player.commandQueue.getTimeTilRun(i));
-        let buf = ` ${index}) <bold><white>${command.label}</white></bold>`;
-        buf += ` <yellow>(</yellow><bold><white>${ttr}s</white></bold><yellow>)</yellow>`;
+        let buf = ` ${index}) {bold {white ${command.label}}}`;
+        buf += ` {yellow (}{bold {white ${ttr}s}}{yellow )}`;
         Broadcast.sayAt(player, buf);
       }
 
-      Broadcast.sayAt(player, '<bold><yellow>Use the "flush" command to flush the queue</yellow></bold>');
+      Broadcast.sayAt(player, '{bold {yellow Use the "flush" command to flush the queue}}');
     }
   };
 };

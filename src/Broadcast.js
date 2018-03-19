@@ -1,6 +1,6 @@
 'use strict';
 
-const color = require('color');
+const color = require('./Color');
 const wrap = require('wrap-ansi');
 const TypeUtil = require('./TypeUtil');
 const Broadcastable = require('./Broadcastable');

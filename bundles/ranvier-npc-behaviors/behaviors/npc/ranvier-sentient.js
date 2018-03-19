@@ -67,7 +67,7 @@ module.exports = srcPath => {
             case 'shop.list':
               if (!this.hasBehavior('vendor')) {
                 if (result.fulfillment && result.fulfillment.speech) {
-                  return B.sayAt(player, `<b><cyan>${this.name} says, "${result.fulfillment.speech}"</cyan></b>`);
+                  return B.sayAt(player, `{bold {cyan ${this.name} says, "${result.fulfillment.speech}"}}`);
                 }
 
                 return failure();
@@ -92,7 +92,7 @@ module.exports = srcPath => {
                 return failure();
               }
 
-              B.sayAt(player, `<b><cyan>${this.name} says, "${reply}"</cyan></b>`);
+              B.sayAt(player, `{bold {cyan ${this.name} says, "${reply}"}}`);
               break;
           }
 

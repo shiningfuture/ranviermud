@@ -11,7 +11,7 @@ module.exports = srcPath => {
     requiredRole: PlayerRoles.ADMIN,
     command: state => (time, player) => {
       if (time === 'now') {
-        Broadcast.sayAt(state.PlayerManager, '<b><yellow>Game is shutting down now!</yellow></b>');
+        Broadcast.sayAt(state.PlayerManager, '{bold {yellow Game is shutting down now!}}');
         state.PlayerManager.saveAll();
         process.exit();
         return;
@@ -21,9 +21,9 @@ module.exports = srcPath => {
         return Broadcast.sayAt(player, 'You must confirm the shutdown with "shutdown sure" or force immediate shutdown with "shutdown now"');
       }
 
-      Broadcast.sayAt(state.PlayerManager, `<b><yellow>Game will shut down in ${30} seconds.</yellow></b>`);
+      Broadcast.sayAt(state.PlayerManager, `{bold {yellow Game will shut down in ${30} seconds.}}`);
       setTimeout(_ => {
-        Broadcast.sayAt(state.PlayerManager, '<b><yellow>Game is shutting down now!</yellow></b>');
+        Broadcast.sayAt(state.PlayerManager, '{bold {yellow Game is shutting down now!}}');
         state.PlayerManager.saveAll();
         process.exit();
       }, 30000);

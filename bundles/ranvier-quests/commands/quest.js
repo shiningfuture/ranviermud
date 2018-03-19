@@ -35,11 +35,11 @@ module.exports = (srcPath) => {
         let qref = quest.entityReference;
         const displayIndex = parseInt(i, 10) + 1;
         if (player.questTracker.canStart(quest)) {
-          say(player, `[<b><yellow>!</yellow></b>] - ${displayIndex}. ${quest.config.title}`);
+          say(player, `[{bold {yellow !}}] - ${displayIndex}. ${quest.config.title}`);
         } else if (player.questTracker.isActive(qref)) {
           quest = player.questTracker.get(qref);
           const symbol = quest.getProgress().percent >= 100 ? '?' : '%';
-          say(player, `[<b><yellow>${symbol}</yellow></b>] - ${displayIndex}. ${quest.config.title}`);
+          say(player, `[{bold {yellow ${symbol}}}] - ${displayIndex}. ${quest.config.title}`);
         }
       }
     }
@@ -94,28 +94,28 @@ module.exports = (srcPath) => {
         const [, quest] = active[i];
         const progress = quest.getProgress();
 
-        B.at(player, '<b><yellow>' + (parseInt(i, 10) + 1) + '</yellow></b>: ');
+        B.at(player, '{bold {yellow ' + (parseInt(i, 10) + 1) + '}}: ');
         say(player, B.progress(60, progress.percent, 'yellow') + ` ${progress.percent}%`);
-        say(player, B.indent('<b><yellow>' + quest.getProgress().display + '</yellow></b>', 2));
+        say(player, B.indent('{bold {yellow ' + quest.getProgress().display + '}}', 2));
 
         if (quest.config.npc) {
           const npc = state.MobFactory.getDefinition(quest.config.npc);
-          say(player, `  <b><yellow>Questor: ${npc.name}</yellow></b>`);
+          say(player, `  {bold {yellow Questor: ${npc.name}}}`);
         }
 
         say(player, '  ' + B.line(78));
         say(
           player,
           B.indent(
-            B.wrap(`<b><yellow>${quest.config.description}</yellow></b>`, 78),
+            B.wrap(`{bold {yellow ${quest.config.description}}}`, 78),
             2
           )
         );
 
         if (quest.config.rewards.length) {
           say(player);
-          say(player, '<b><yellow>' + B.center(80, 'Rewards') + '</yellow></b>');
-          say(player, '<b><yellow>' + B.center(80, '-------') + '</yellow></b>');
+          say(player, '{bold {yellow ' + B.center(80, 'Rewards') + '}}');
+          say(player, '{bold {yellow ' + B.center(80, '-------') + '}}');
 
           for (const reward of quest.config.rewards) {
             const rewardClass = state.QuestRewardManager.get(reward.type);

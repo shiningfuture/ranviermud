@@ -21,7 +21,7 @@ module.exports = srcPath => {
 
     setupPlayer: player => {
       player.addAttribute('energy', 100);
-      player.prompt = '[ %health.current%/%health.max% <b>hp</b> %energy.current%/%energy.max% <b>energy</b> ]';
+      player.prompt = '[ %health.current%/%health.max% {bold hp} %energy.current%/%energy.max% {bold energy} ]';
     }
   };
 };

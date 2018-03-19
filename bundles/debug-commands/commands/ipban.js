@@ -34,8 +34,8 @@ module.exports = srcPath => {
       bannedList.push(target.socket.address().address);
       Data.saveFile(bannedFile, bannedList);
 
-      B.sayAt(target, '<b><red>SLAM! A mighty hammer appears from the sky and crushes you! You have been BANNED!</red></b>');
-      say(`<b><red>SLAM! A mighter hammer appears from the sky and crushes ${target.name}! They have been BANNED!</red></b>`);
+      B.sayAt(target, '{bold {red SLAM! A mighty hammer appears from the sky and crushes you! You have been BANNED!}}');
+      say(`{bold {red SLAM! A mighter hammer appears from the sky and crushes ${target.name}! They have been BANNED!}}`);
       target.socket.emit('close');
     }
   };

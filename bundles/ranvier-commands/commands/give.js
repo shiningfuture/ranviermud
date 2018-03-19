@@ -47,7 +47,7 @@ module.exports = (srcPath, bundlePath) => {
       }
 
       if (target === player) {
-        return B.sayAt(player, `<green>You move ${ItemUtil.display(targetItem)} from one hand to the other. That was productive.</green>`);
+        return B.sayAt(player, `{green You move ${ItemUtil.display(targetItem)} from one hand to the other. That was productive.}`);
       }
 
       if (target.isInventoryFull()) {
@@ -57,9 +57,9 @@ module.exports = (srcPath, bundlePath) => {
       player.removeItem(targetItem);
       target.addItem(targetItem);
 
-      B.sayAt(player, `<green>You give <white>${target.name}</white>: ${ItemUtil.display(targetItem)}.</green>`);
+      B.sayAt(player, `{green You give {white ${target.name}}: ${ItemUtil.display(targetItem)}.}`);
       if (!target.isNpc) {
-        B.sayAt(target, `<green>${player.name} gives you: ${ItemUtil.display(targetItem)}.</green>`);
+        B.sayAt(target, `{green ${player.name} gives you: ${ItemUtil.display(targetItem)}.}`);
       }
     }
   };

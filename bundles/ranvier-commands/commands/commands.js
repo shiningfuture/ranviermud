@@ -11,8 +11,8 @@ module.exports = (srcPath) => {
     command: (state) => (args, player) => {
 
       // print standard commands
-      Broadcast.sayAt(player, "<bold><white>                  Commands</bold></white>");
-      Broadcast.sayAt(player, "<bold><white>===============================================</bold></white>");
+      Broadcast.sayAt(player, "{bold {white                   Commands}}");
+      Broadcast.sayAt(player, "{bold {white ===============================================}}");
 
       let i = 0;
       for (let [ name, command ] of state.CommandManager.commands) {
@@ -32,8 +32,8 @@ module.exports = (srcPath) => {
 
       // channels
       Broadcast.sayAt(player);
-      Broadcast.sayAt(player, "<bold><white>                  Channels</bold></white>");
-      Broadcast.sayAt(player, "<bold><white>===============================================</bold></white>");
+      Broadcast.sayAt(player, "{bold {white                   Channels}}");
+      Broadcast.sayAt(player, "{bold {white ===============================================}}");
 
       i = 0;
       for (let [ name ] of state.ChannelManager.channels) {

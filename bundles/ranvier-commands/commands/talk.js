@@ -39,7 +39,7 @@ module.exports = (srcPath) => {
         return B.sayAt(player, "You don't see them here.");
       }
 
-      B.sayAt(player, `<b><cyan>You say to ${npc.name}, '${message}'</cyan></b>`);
+      B.sayAt(player, `{bold {cyan You say to ${npc.name}, '${message}'}}`);
       if (!npc.hasBehavior('ranvier-sentient')) {
         return B.sayAt(player, "They don't seem to understand you.");
       }

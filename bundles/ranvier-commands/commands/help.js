@@ -82,12 +82,12 @@ module.exports = (srcPath) => {
       const [ _, hfile ] = [...results][0];
       return B.sayAt(player, render(state, hfile));
     }
-    B.sayAt(player, "<yellow>---------------------------------------------------------------------------------</yellow>");
-    B.sayAt(player, "<white>Search Results:</white>");
-    B.sayAt(player, "<yellow>---------------------------------------------------------------------------------</yellow>");
+    B.sayAt(player, "{yellow ---------------------------------------------------------------------------------}");
+    B.sayAt(player, "{white Search Results:}");
+    B.sayAt(player, "{yellow ---------------------------------------------------------------------------------}");
 
     for (const [name, help] of results) {
-      B.sayAt(player, `<cyan>${name}</cyan>`);
+      B.sayAt(player, `{cyan ${name}}`);
     }
   }
 

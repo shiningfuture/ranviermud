@@ -24,12 +24,12 @@ module.exports = (srcPath) => {
         source: this
       });
 
-      Broadcast.sayAt(player, `<bold>You drink the potion and a warm feeling fills your body.</bold>`);
+      Broadcast.sayAt(player, `{bold You drink the potion and a warm feeling fills your body.}`);
       heal.commit(player);
     },
 
     info: function (player) {
-      return `Restores <b>${this.options.restores}%</b> of your total ${this.options.stat}.`;
+      return `Restores {bold ${this.options.restores}%} of your total ${this.options.stat}.`;
     }
   };
 };

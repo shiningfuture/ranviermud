@@ -30,7 +30,7 @@ module.exports = (srcPath, bundlePath) => {
         const vendorItem = vendorConfig.items[item.entityReference];
 
         B.sayAt(player, ItemUtil.renderItem(state, item, player));
-        B.sayAt(player, `Cost: <b><white>[${friendlyCurrencyName(vendorItem.currency)}]</white></b> x ${vendorItem.cost}`);
+        B.sayAt(player, `Cost: {bold {white [${friendlyCurrencyName(vendorItem.currency)}]}} x ${vendorItem.cost}`);
         return;
       }
 
@@ -73,10 +73,10 @@ module.exports = (srcPath, bundlePath) => {
           const vendorItem = vendorConfig.items[item.entityReference];
 
           B.sayAt(player,
-            '<yellow>|</yellow> ' +
+            '{yellow |} ' +
             ItemUtil.qualityColorize(item, sprintf('%-48s', `[${item.name}]`)) +
-            sprintf(' <yellow>|</yellow> <b>%-26s</b>', B.center(26, friendlyCurrencyName(vendorItem.currency) + ' x ' + vendorItem.cost)) +
-            '<yellow>|</yellow> '
+            sprintf(' {yellow |} {bold %-26s}', B.center(26, friendlyCurrencyName(vendorItem.currency) + ' x ' + vendorItem.cost)) +
+            '{yellow |} '
           );
         }
 
@@ -118,7 +118,7 @@ module.exports = (srcPath, bundlePath) => {
       item.hydrate(state);
       state.ItemManager.add(item);
       player.addItem(item);
-      say(player, `<green>You spend <b><white>${vendorItem.cost} ${friendlyCurrencyName(vendorItem.currency)}</white></b> to purchase ${ItemUtil.display(item)}.</green>`);
+      say(player, `{green You spend {bold {white ${vendorItem.cost} ${friendlyCurrencyName(vendorItem.currency)}}} to purchase ${ItemUtil.display(item)}.}`);
       player.save();
     }
   });
@@ -144,7 +144,7 @@ module.exports = (srcPath, bundlePath) => {
       }
 
       if (!['poor', 'common'].includes(item.metadata.quality || 'common') && confirm !== 'sure') {
-        return say(player, "To sell higher quality items use '<b>sell <item> sure</b>'.");
+        return say(player, "To sell higher quality items use '{bold sell <item> sure}'.");
       }
 
       const currencyKey = 'currencies.' + sellable.currency;
@@ -153,7 +153,7 @@ module.exports = (srcPath, bundlePath) => {
       }
       player.setMeta(currencyKey, (player.getMeta(currencyKey) || 0) + sellable.value);
 
-      say(player, `<green>You sell ${ItemUtil.display(item)} for <b><white>${sellable.value} ${friendlyCurrencyName(sellable.currency)}</white></b>.</green>`);
+      say(player, `{green You sell ${ItemUtil.display(item)} for {bold {white ${sellable.value} ${friendlyCurrencyName(sellable.currency)}}}.}`);
       state.ItemManager.remove(item);
     }
   });
@@ -182,7 +182,7 @@ module.exports = (srcPath, bundlePath) => {
         return say(player, "You can't sell that item.");
       }
 
-      tell(`I could give you <b><white>${sellable.value} ${friendlyCurrencyName(sellable.currency)}</white></b> for ${ItemUtil.display(targetItem)}.</green>`);
+      tell(`I could give you {bold {white ${sellable.value} ${friendlyCurrencyName(sellable.currency)}}} for ${ItemUtil.display(targetItem)}.}`);
     }
   });
 
@@ -203,7 +203,7 @@ module.exports = (srcPath, bundlePath) => {
       const subcommand = subcommands.find(command);
 
       if (!subcommand) {
-        return say(player, "Not a valid shop command. See '<b>help shops</b>'");
+        return say(player, "Not a valid shop command. See '{bold help shops}'");
       }
 
       subcommand.command(state)(vendor, commandArgs.join(' '), player);

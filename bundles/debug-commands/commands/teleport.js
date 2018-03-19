@@ -49,7 +49,7 @@ module.exports = (srcPath) => {
       const oldRoom = player.room;
 
       player.moveTo(targetRoom, () => {
-        Broadcast.sayAt(player, '<b><green>You snap your finger and instantly appear in a new room.</green></b>\r\n');
+        Broadcast.sayAt(player, '{bold {green You snap your finger and instantly appear in a new room.}}\r\n');
         state.CommandManager.get('look').execute('', player);
       });
 

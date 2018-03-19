@@ -120,7 +120,7 @@
       destroyOnDepleted: true
       # effect config, see Effect docs. `name` is auto-populated with the item name
       config:
-        description: "Increases strength by <b>10</b> for <b>15</b> seconds"
+        description: "Increases strength by {bold 10} for {bold 15} seconds"
         duration: 15000
       # effect state, see Effect docs
       state:

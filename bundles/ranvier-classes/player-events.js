@@ -88,14 +88,14 @@ module.exports = srcPath => {
         const newSkills = abilities[this.level].skills || [];
         for (const abilityId of newSkills) {
           const skill = state.SkillManager.get(abilityId);
-          B.sayAt(this, `<bold><yellow>You can now use skill: ${skill.name}.</yellow></bold>`);
+          B.sayAt(this, `{bold {yellow You can now use skill: ${skill.name}.}}`);
           skill.activate(this);
         }
 
         const newSpells = abilities[this.level].spells || [];
         for (const abilityId of newSpells) {
           const spell = state.SpellManager.get(abilityId);
-          B.sayAt(this, `<bold><yellow>You can now use spell: ${spell.name}.</yellow></bold>`);
+          B.sayAt(this, `{bold {yellow You can now use spell: ${spell.name}.}}`);
         }
       }
     }

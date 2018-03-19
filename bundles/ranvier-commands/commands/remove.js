@@ -19,7 +19,7 @@ module.exports = (srcPath, bundlePath) => {
       }
 
       const [slot, item] = result;
-      Broadcast.sayAt(player, `<green>You un-equip: </green>${ItemUtil.display(item)}<green>.</green>`);
+      Broadcast.sayAt(player, `{green You un-equip: }${ItemUtil.display(item)}{green .}`);
       player.unequip(slot);
     }
   };

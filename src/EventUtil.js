@@ -1,6 +1,6 @@
 'use strict';
 
-const chalk = require('chalk');
+const color = require('./Color');
 
 /**
  * Helper methods for colored output during input-events
@@ -12,7 +12,7 @@ class EventUtil {
    * @return {function (string)}
    */
   static genWrite(socket) {
-    return string => socket.write(chalk`${string}`);
+    return string => socket.write(color`${string}`);
   }
 
   /**
@@ -21,7 +21,7 @@ class EventUtil {
    * @return {function (string)}
    */
   static genSay(socket) {
-    return string => socket.write(chalk`${string}\r\n`);
+    return string => socket.write(color`${string}\r\n`);
   }
 }
 

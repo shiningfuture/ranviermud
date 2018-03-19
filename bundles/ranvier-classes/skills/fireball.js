@@ -35,10 +35,10 @@ module.exports = (srcPath) => {
         source: this
       });
 
-      Broadcast.sayAt(player, '<bold>With a wave of your hand, you unleash a <red>fire</red></bold><yellow>b<bold>all</bold></yellow> <bold>at your target!</bold>');
-      Broadcast.sayAtExcept(player.room, `<bold>With a wave of their hand, ${player.name} unleashes a <red>fire</red></bold><yellow>b<bold>all</bold></yellow> <bold>at ${target.name}!</bold>`, [player, target]);
+      Broadcast.sayAt(player, '{bold With a wave of your hand, you unleash a {red fire}}{yellow b{bold all}} {bold at your target!}');
+      Broadcast.sayAtExcept(player.room, `{bold With a wave of their hand, ${player.name} unleashes a {red fire}}{yellow b{bold all}} {bold at ${target.name}!}`, [player, target]);
       if (!target.isNpc) {
-        Broadcast.sayAt(target, `<bold>With a wave of their hand, ${player.name} unleashes a <red>fire</red></bold><yellow>b<bold>all</bold></yellow> <bold>at you!</bold>`);
+        Broadcast.sayAt(target, `{bold With a wave of their hand, ${player.name} unleashes a {red fire}}{yellow b{bold all}} {bold at you!}`);
       }
       damage.commit(target);
     },

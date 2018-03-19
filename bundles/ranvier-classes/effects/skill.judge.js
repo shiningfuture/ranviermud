@@ -31,11 +31,11 @@ module.exports = srcPath => {
     },
     listeners: {
       effectActivated: function () {
-        Broadcast.sayAt(this.target, '<yellow>The holy judgement weakens you.</yellow>');
+        Broadcast.sayAt(this.target, '{yellow The holy judgement weakens you.}');
       },
 
       effectDeactivated: function () {
-        Broadcast.sayAt(this.target, '<yellow>You feel your strength return.</yellow>');
+        Broadcast.sayAt(this.target, '{yellow You feel your strength return.}');
       },
 
       hit: function () {

@@ -21,7 +21,7 @@ module.exports = srcPath => {
       const amount = this._getAmount(quest, config);
       const friendlyName = config.currency.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
 
-      return `Currency: <b>${amount}</b> x <b><white>[${friendlyName}]</white></b>`
+      return `Currency: {bold ${amount}} x {bold {white [${friendlyName}]}}`
     }
 
     static _getAmount(quest, config) {

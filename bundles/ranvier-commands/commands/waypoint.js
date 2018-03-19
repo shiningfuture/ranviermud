@@ -44,7 +44,7 @@ module.exports = srcPath => {
 
       waypoints.saved.push(player.room.entityReference);
       player.setMeta('waypoints', waypoints);
-      B.sayAt(player, `${player.room.title} saved to your waypoints. Use '<b>waypoint home</b>' to set as your home waypoint.`);
+      B.sayAt(player, `${player.room.title} saved to your waypoints. Use '{bold waypoint home}' to set as your home waypoint.`);
     }
   });
 
@@ -91,14 +91,14 @@ module.exports = srcPath => {
       const waypoint = waypoints.saved[index];
       const nextRoom = state.RoomManager.getRoom(waypoint);
 
-      B.sayAt(player, '<b><cyan>You walk up and touch the waypillar, you are consumed by a bright blue light.</cyan></b>');
-      B.sayAtExcept(player.room, `<b><cyan>${player.name} walks up and touches the waypillar and disappears in a flash of blue light.</cyan></b>`, [player]);
+      B.sayAt(player, '{bold {cyan You walk up and touch the waypillar, you are consumed by a bright blue light.}}');
+      B.sayAtExcept(player.room, `{bold {cyan ${player.name} walks up and touches the waypillar and disappears in a flash of blue light.}}`, [player]);
 
       player.moveTo(nextRoom, _ => {
         state.CommandManager.get('look').execute('', player);
 
-        B.sayAt(player, '<b><cyan>The blue light dims and you find yourself at the next wayshrine.</cyan></b>');
-        B.sayAtExcept(player.room, `<b><cyan>The waypiller glows brightly and ${player.name} appears in a flash of blue light.</cyan></b>`, [player]);
+        B.sayAt(player, '{bold {cyan The blue light dims and you find yourself at the next wayshrine.}}');
+        B.sayAtExcept(player.room, `{bold {cyan The waypiller glows brightly and ${player.name} appears in a flash of blue light.}}`, [player]);
       });
     }
   });

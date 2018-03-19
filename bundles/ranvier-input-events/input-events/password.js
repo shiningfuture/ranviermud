@@ -36,7 +36,7 @@ module.exports = (srcPath) => {
         socket.command('toggleEcho');
 
         if (!args.account.checkPassword(pass.toString().trim())) {
-          write("<red>Incorrect password.</red>\r\n");
+          write("{red Incorrect password.}\r\n");
           passwordAttempts[name]++;
 
           return socket.emit('password', socket, args);

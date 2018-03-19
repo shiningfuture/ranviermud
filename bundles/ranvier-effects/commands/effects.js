@@ -25,7 +25,7 @@ module.exports = (srcPath) => {
         } else if (effect.flags.includes(Flag.DEBUFF)) {
           color = 'red';
         }
-        B.at(player, `<bold><${color}>  ${effect.name}</${color}></bold>`);
+        B.at(player, `{bold {${color}   ${effect.name}}}`);
         if (effect.config.maxStacks) {
           B.at(player, ` (${effect.state.stacks || 1})`);
         }

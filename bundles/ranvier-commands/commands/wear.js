@@ -43,7 +43,7 @@ module.exports = (srcPath, bundlePath) => {
         return Logger.error(err);
       }
 
-      say(player, `<green>You equip:</green> ${ItemUtil.display(item)}<green>.</green>`);
+      say(player, `{green You equip:} ${ItemUtil.display(item)}{green .}`);
     }
   };
 };

@@ -11,7 +11,7 @@
   },
   "metadata": {},
   "playerClass": null,
-  "prompt": "[ %health.current%/%health.max% <bold>hp</bold> ]",
+  "prompt": "[ %health.current%/%health.max% {bold hp} %energy.current%/%energy.max% {bold energy} ]",
   "quests": {
     "completed": [],
     "active": []

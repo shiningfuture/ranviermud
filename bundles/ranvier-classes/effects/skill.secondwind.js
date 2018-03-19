@@ -28,7 +28,7 @@ module.exports = srcPath => {
           return;
         }
 
-        Broadcast.sayAt(this.target, "<bold><yellow>You catch a second wind!</bold></yellow>");
+        Broadcast.sayAt(this.target, "{bold {yellow You catch a second wind!}}");
         const heal = new Heal({
           amount: Math.floor(this.target.getMaxAttribute('energy') * (this.state.restorePercent / 100)),
           attacker: this.target,

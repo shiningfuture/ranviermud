@@ -38,19 +38,19 @@ module.exports = (srcPath) => {
       });
 
       if (target !== player) {
-        Broadcast.sayAt(player, `<b>You call upon to the light to heal ${target.name}'s wounds.</b>`);
-        Broadcast.sayAtExcept(player.room, `<b>${player.name} calls upon to the light to heal ${target.name}'s wounds.</b>`, [target, player]);
-        Broadcast.sayAt(target, `<b>${player.name} calls upon to the light to heal your wounds.</b>`);
+        Broadcast.sayAt(player, `{bold You call upon to the light to heal ${target.name}'s wounds.}`);
+        Broadcast.sayAtExcept(player.room, `{bold ${player.name} calls upon to the light to heal ${target.name}'s wounds.}`, [target, player]);
+        Broadcast.sayAt(target, `{bold ${player.name} calls upon to the light to heal your wounds.}`);
       } else {
-        Broadcast.sayAt(player, "<b>You call upon to the light to heal your wounds.</b>");
-        Broadcast.sayAtExcept(player.room, `<b>${player.name} calls upon to the light to heal their wounds.</b>`, [player, target]);
+        Broadcast.sayAt(player, "{bold You call upon to the light to heal your wounds.}");
+        Broadcast.sayAtExcept(player.room, `{bold ${player.name} calls upon to the light to heal their wounds.}`, [player, target]);
       }
 
       heal.commit(target);
     },
 
     info: (player) => {
-      return `Call upon the light to heal <b>${healPercent}%</b> of your or your target's max health. If below ${bonusThreshold}% health, Plea of Light heals twice as much.`;
+      return `Call upon the light to heal {bold ${healPercent}%} of your or your target's max health. If below ${bonusThreshold}% health, Plea of Light heals twice as much.`;
     }
   };
 };

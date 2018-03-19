@@ -163,13 +163,13 @@ class Broadcast {
     barChar = barChar[0];
     fillChar = fillChar[0];
     const [ leftDelim, rightDelim ] = delimiters;
-    const openColor = `<${color}>`;
-    const closeColor = `</${color}>`;
-    let buf = openColor + leftDelim + "<bold>";
+    const openColor = `{${color} `;
+    const closeColor = `}`;
+    let buf = openColor + leftDelim + "{bold ";
     const widthPercent = Math.round((percent / 100) * width);
     buf += Broadcast.line(widthPercent, barChar) + (percent === 100 ? '' : rightDelim);
     buf += Broadcast.line(width - widthPercent, fillChar);
-    buf += "</bold>" + rightDelim + closeColor;
+    buf += "}" + rightDelim + closeColor;
     return buf;
   }
 
@@ -186,8 +186,8 @@ class Broadcast {
     let openColor = '';
     let closeColor = '';
     if (color) {
-      openColor = `<${color}>`;
-      closeColor = `</${color}>`;
+      openColor = `{${color} `;
+      closeColor = `}`;
     }
 
     return (
@@ -210,8 +210,8 @@ class Broadcast {
     let openColor = '';
     let closeColor = '';
     if (color) {
-      openColor = `<${color}>`;
-      closeColor = `</${color}>`;
+      openColor = `{${color} `;
+      closeColor = `}`;
     }
     return openColor + (new Array(width + 1)).join(fillChar) + closeColor;
   }

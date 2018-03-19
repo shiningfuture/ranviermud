@@ -29,8 +29,8 @@ module.exports = srcPath => {
         return say('No such player online.');
       }
 
-      B.sayAt(target, '<b><red>SLAM! A mighty hammer appears from the sky and crushes you! You have been BANNED!</red></b>');
-      say(`<b><red>SLAM! A mighter hammer appears from the sky and crushes ${target.name}! They have been BANNED!</red></b>`);
+      B.sayAt(target, '{bold {red SLAM! A mighty hammer appears from the sky and crushes you! You have been BANNED!}}');
+      say(`{bold {red SLAM! A mighter hammer appears from the sky and crushes ${target.name}! They have been BANNED!}}`);
       target.account.ban();
       target.socket.emit('close');
     }

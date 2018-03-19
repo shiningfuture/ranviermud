@@ -20,7 +20,7 @@ module.exports = (srcPath, bundlePath) => {
 
       // list categories
       if (!args || !args.length) {
-        say(player, '<b>Crafting Categories</b>');
+        say(player, '{bold Crafting Categories}');
         say(player, B.line(40));
 
         return craftingCategories.forEach((category, index) => {
@@ -38,7 +38,7 @@ module.exports = (srcPath, bundlePath) => {
 
       // list items within a category
       if (!itemNumber) {
-        say(player, `<b>${category.title}</b>`);
+        say(player, `{bold ${category.title}}`);
         say(player, B.line(40));
 
         if (!category.items.length) {
@@ -57,7 +57,7 @@ module.exports = (srcPath, bundlePath) => {
       }
 
       say(player, ItemUtil.renderItem(state, item.item, player));
-      say(player, '<b>Recipe:</b>');
+      say(player, '{bold Recipe:}');
       for (const [resource, amount] of Object.entries(item.recipe)) {
         const ingredient = Crafting.getResourceItem(resource);
         say(player, `  ${ItemUtil.display(ingredient)} x ${amount}`);
@@ -110,12 +110,12 @@ module.exports = (srcPath, bundlePath) => {
       for (const [resource, amount] of Object.entries(item.recipe)) {
         player.setMeta(`resources.${resource}`, player.getMeta(`resources.${resource}`) - amount);
         const resItem = Crafting.getResourceItem(resource);
-        say(player, `<green>You spend ${amount} x ${ItemUtil.display(resItem)}.</green>`);
+        say(player, `{green You spend ${amount} x ${ItemUtil.display(resItem)}.}`);
       }
 
       state.ItemManager.add(item.item);
       player.addItem(item.item);
-      say(player, `<b><green>You create: ${ItemUtil.display(item.item)}.</green></b>`);
+      say(player, `{bold {green You create: ${ItemUtil.display(item.item)}.}}`);
       player.save();
     }
   });

@@ -102,7 +102,7 @@ module.exports = (srcPath, bundlePath) => {
     }
     player.addItem(item);
 
-    Broadcast.sayAt(player, `<green>You receive loot: </green>${ItemUtil.display(item)}<green>.</green>`);
+    Broadcast.sayAt(player, `{green You receive loot: }${ItemUtil.display(item)}{green .}`);
 
     item.emit('get', player);
     player.emit('get', item);

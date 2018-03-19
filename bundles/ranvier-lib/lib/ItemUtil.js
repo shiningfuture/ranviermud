@@ -29,8 +29,8 @@ exports.qualityColors = qualityColors;
  */
 function qualityColorize(item, string) {
   const colors = qualityColors[item.metadata.quality || 'common'];
-  const open = '<' + colors.join('><') + '>';
-  const close = '</' + colors.reverse().join('></') + '>';
+  const open = '{' + colors.join(' {') + ' ';
+  const close = colors.reverse().map(() => '}');
   return open + string + close;
 }
 exports.qualityColorize = qualityColorize;
@@ -93,13 +93,13 @@ exports.renderItem = function (state, item, player) {
     props.specialEffects.forEach(effectText => {
       const text = B.wrap(effectText, 36).split(/\r\n/g);
       text.forEach(textLine => {
-        buf += sprintf('| <b><green>%-36s</green></b> |\r\n', textLine);
+        buf += sprintf('| {bold {green %-36s}} |\r\n', textLine);
       });
     });
   }
 
   if (props.level) {
-    const cantUse = props.level > player.level ? '<red>%-36s</red>' : '%-36s';
+    const cantUse = props.level > player.level ? '{red %-36s}' : '%-36s';
     buf += sprintf(`| ${cantUse} |\r\n`, 'Requires Level ' + props.level);
   }
   buf += qualityColorize(item, "'" + B.line(38) + "'") + '\r\n';
@@ -111,12 +111,12 @@ exports.renderItem = function (state, item, player) {
       const useSpell = state.SpellManager.get(usable.spell);
       if (useSpell) {
         useSpell.options = usable.options;
-        buf += B.wrap('<b>On Use</b>: ' + useSpell.info(player), 80) + '\r\n';
+        buf += B.wrap('{bold On Use}: ' + useSpell.info(player), 80) + '\r\n';
       }
     }
 
     if (usable.effect && usable.config.description) {
-      buf += B.wrap('<b>Effect</b>: ' + usable.config.description, 80) + '\r\n';
+      buf += B.wrap('{bold Effect}: ' + usable.config.description, 80) + '\r\n';
     }
 
     if (usable.charges) {

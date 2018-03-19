@@ -19,7 +19,7 @@ module.exports = (srcPath) => {
       const [command, configToSet, valueToSet ] = args.split(' ');
 
       if (!possibleCommands.includes(command)) {
-        Broadcast.sayAt(player, `<red>Invalid config command: ${command}</red>`);
+        Broadcast.sayAt(player, `{red Invalid config command: ${command}}`);
         return state.CommandManager.get('help').execute('config', player);
       }
 
@@ -40,12 +40,12 @@ module.exports = (srcPath) => {
       const possibleSettings = ['brief', 'autoloot', 'minimap'];
 
       if (!possibleSettings.includes(configToSet)) {
-        Broadcast.sayAt(player, `<red>Invalid setting: ${configToSet}. Possible settings: ${possibleSettings.join(', ')}`);
+        Broadcast.sayAt(player, `{red Invalid setting: ${configToSet}. Possible settings: ${possibleSettings.join(', ')}`);
         return state.CommandManager.get('help').execute('config', player);
       }
 
       if (!valueToSet) {
-        Broadcast.sayAt(player, `<red>What value do you want to set for ${configToSet}?</red>`);
+        Broadcast.sayAt(player, `{red What value do you want to set for ${configToSet}?}`);
         return state.CommandManager.get('help').execute('config', player);
       }
 
@@ -55,7 +55,7 @@ module.exports = (srcPath) => {
       };
 
       if (possibleValues[valueToSet] === undefined) {
-        return Broadcast.sayAt(player, `<red>Value must be either: on / off</red>`);
+        return Broadcast.sayAt(player, `{red Value must be either: on / off}`);
       }
 
       if (!player.getMeta('config')) {

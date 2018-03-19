@@ -112,7 +112,7 @@
   description: >
     A runed black obelisk towers in the center of this clearing, surrounded by a faerie ring. The runes pulse and glow with
     a soft blue light. The grass immediately around the obelisk is immaculate in stark contrast to the dying former meadow
-    that makes up the clearing. The obelisk looks like it can be used as a <b><cyan>waypoint</cyan></b>.
+    that makes up the clearing. The obelisk looks like it can be used as a {bold {cyan waypoint}}.
   script: '8-waypoint'
   behaviors:
     waypoint: true
@@ -126,7 +126,7 @@
   description: >- 
     A very brightly colored shop stall stands in the middle of an otherwise desolate clearing. The stall is covered in
     colorful cloth, shining gems, and battle gear of all varieties. A large sign sits next to the products:
-    "<b><yellow>Wally's Wonderful Wares</yellow></b> has the best products in town! Armor, weapons and potions, you name
+    "{bold {yellow Wally's Wonderful Wares}} has the best products in town! Armor, weapons and potions, you name
     and we... might have it!"
   npcs:
     - id: "limbo:6"
@@ -138,7 +138,7 @@
   title: "Room Context Commands Test"
   script: '10-context'
   description: >-
-    This room shows off commands that are only active in a particular room. Try out the <b><cyan>roomtest</cyan></b> command.
+    This room shows off commands that are only active in a particular room. Try out the {bold {cyan roomtest}} command.
   behaviors:
     commands: [ 'roomtest' ]
   items:

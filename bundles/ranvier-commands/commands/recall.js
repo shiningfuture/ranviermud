@@ -11,15 +11,15 @@ module.exports = srcPath => {
         return B.sayAt(player, 'You do not have a home waypoint set.');
       }
 
-      B.sayAt(player, '<b><cyan>You pray to the gods to be returned home and are consumed by a bright blue light.</cyan></b>');
-      B.sayAtExcept(player.room, `<b><cyan>${player.name} disappears in a flash of blue light.</cyan></b>`, [player]);
+      B.sayAt(player, '{bold {cyan You pray to the gods to be returned home and are consumed by a bright blue light.}}');
+      B.sayAtExcept(player.room, `{bold {cyan ${player.name} disappears in a flash of blue light.}}`, [player]);
 
       const nextRoom = state.RoomManager.getRoom(home);
       player.moveTo(nextRoom, _ => {
         state.CommandManager.get('look').execute('', player);
 
-        B.sayAt(player, '<b><cyan>The blue light dims and you find yourself at the wayshrine.</cyan></b>');
-        B.sayAtExcept(player.room, `<b><cyan>The waypiller glows brightly and ${player.name} appears in a flash of blue light.</cyan></b>`, [player]);
+        B.sayAt(player, '{bold {cyan The blue light dims and you find yourself at the wayshrine.}}');
+        B.sayAtExcept(player.room, `{bold {cyan The waypiller glows brightly and ${player.name} appears in a flash of blue light.}}`, [player]);
       });
     }
   };

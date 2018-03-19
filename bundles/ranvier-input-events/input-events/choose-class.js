@@ -24,7 +24,7 @@ module.exports = (srcPath) => {
         return [id, instance.config];
       });
       for (const [ id, config ] of classes) {
-        say(`[<bold>${id}</bold>] - <bold>${config.name}</bold>`);
+        say(`[{bold ${id}}] - {bold ${config.name}}`);
         say(Broadcast.wrap(`      ${config.description}\r\n`, 80));
       }
       write('> ');

@@ -52,7 +52,7 @@
         <article>
             <pre class="prettyprint source linenums"><code>'use strict';
 
-const chalk = require('chalk');
+const color = require('color');
 const wrap = require('wrap-ansi');
 const TypeUtil = require('./TypeUtil');
 const Broadcastable = require('./Broadcastable');
@@ -88,7 +88,7 @@ class Broadcast {
           target.socket._prompted = false;
         }
         let targetMessage = formatter(target, message);
-        targetMessage = wrapWidth ? Broadcast.wrap(chalk`${targetMessage}`, wrapWidth) : chalk`${targetMessage}`;
+        targetMessage = wrapWidth ? Broadcast.wrap(color`${targetMessage}`, wrapWidth) : color`${targetMessage}`;
         target.socket.write(targetMessage);
       }
     });
@@ -215,13 +215,13 @@ class Broadcast {
     barChar = barChar[0];
     fillChar = fillChar[0];
     const [ leftDelim, rightDelim ] = delimiters;
-    const openColor = `&lt;${color}>`;
-    const closeColor = `&lt;/${color}>`;
-    let buf = openColor + leftDelim + "&lt;bold>";
+    const openColor = `{${color} `;
+    const closeColor = `}`;
+    let buf = openColor + leftDelim + "{bold ";
     const widthPercent = Math.round((percent / 100) * width);
     buf += Broadcast.line(widthPercent, barChar) + (percent === 100 ? '' : rightDelim);
     buf += Broadcast.line(width - widthPercent, fillChar);
-    buf += "&lt;/bold>" + rightDelim + closeColor;
+    buf += "}" + rightDelim + closeColor;
     return buf;
   }
 
@@ -238,8 +238,8 @@ class Broadcast {
     let openColor = '';
     let closeColor = '';
     if (color) {
-      openColor = `&lt;${color}>`;
-      closeColor = `&lt;/${color}>`;
+      openColor = `{${color} `;
+      closeColor = `}`;
     }
 
     return (
@@ -262,8 +262,8 @@ class Broadcast {
     let openColor = '';
     let closeColor = '';
     if (color) {
-      openColor = `&lt;${color}>`;
-      closeColor = `&lt;/${color}>`;
+      openColor = `{${color} `;
+      closeColor = `}`;
     }
     return openColor + (new Array(width + 1)).join(fillChar) + closeColor;
   }
@@ -275,7 +275,7 @@ class Broadcast {
    * @return {string}
    */
   static wrap(message, width = 80) {
-    return Broadcast._fixNewlines(wrap(chalk`${message}`, width));
+    return Broadcast._fixNewlines(wrap(color`${message}`, width));
   }
 
   /**

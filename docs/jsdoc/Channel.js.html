@@ -187,8 +187,8 @@ class Channel {
 
     const colors = Array.isArray(this.color) ? this.color : [this.color];
 
-    const open = colors.map(color => `&lt;${color}>`).join('');
-    const close = colors.reverse().map(color => `&lt;/${color}>`).join('');
+    const open = colors.map(color => `{${color} `).join('');
+    const close = colors.reverse().map(color => `}`).join('');
 
     return open + message + close;
   }

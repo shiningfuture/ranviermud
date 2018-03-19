@@ -1,4 +1,4 @@
-<bold><red>
+{red.bold
     #      #         #
     ##    ##       ### #######  ################  ############
      #    #     ####   #     #       #            #    #     #
@@ -14,6 +14,6 @@
   #   #  #   #  #  #      #        #        #          #
   #   #      #     #      #       ##       ##          #
   #   #      #     # ########### ##        #    ################
-  #  ##    ###     #            ##       ###</red>
-                                                  Shining Future</bold>
-                                                  <green>RanvierMud 2.0</green>
+  #  ##    ###     #            ##       ###}
+                                                  {bold Shining Future}
+                                                  {green RanvierMud 2.0}

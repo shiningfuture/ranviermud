@@ -4,6 +4,18 @@
 
 const chalk = require( "chalk" );
 
+
+const balanceChalkTags = (inputString) => {
+  const chalkOpeningTagRegex = /{[^{]+\s+[^{}]?}{0,1}/g
+  const tokens = inputString.match(chalkOpeningTagRegex)
+  const endings = inputString.split('').filter((char) => {
+    return char === '}'
+  })
+  const imbalance = tokens.length - endings.length
+  const isImbalanced = imbalance >= 0
+  return `${inputString}${isImbalanced ? '}'.repeat(imbalance) : ''}`
+}
+
 const color = (parts, ...substitutions) => {
   const rawResults = [];
   const cookedResults = [];
@@ -22,9 +34,12 @@ const color = (parts, ...substitutions) => {
 
   }
 
-  var chalkParts = [ cookedResults.join( "" ) ];
-  chalkParts.raw = [ rawResults.join( "" ) ];
+  const cookedString = cookedResults.join( "" )
+  const rawString = rawResults.join( "" )
 
+  const chalkParts = [ balanceChalkTags(cookedString) ];
+  chalkParts.raw = [ balanceChalkTags(rawString) ];
+  
   return(chalk(chalkParts));
 }
 
